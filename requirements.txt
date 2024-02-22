@@ -1,0 +1,6 @@
+bigdl-llm[all]==2.4.0
+fschat[model_worker,webui]==0.2.36
+
+black==24.2.0 
+isort==5.13.2
+flake8==7.0.0
