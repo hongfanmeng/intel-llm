@@ -1,20 +1,35 @@
 # Intel LLM
 
-Run controller, worker and web server
+This repository provides FastChat support for MiniCPM optimized with BigDL-LLM
 
+## Installation
+
+Install the required dependencies:
 ```bash
-python -m fastchat.serve.controller
-python model_worker.py --model-path openbmb/MiniCPM-2B-dpo-bf16 --device cpu
-python gradio_web_server.py
+pip install -r requirements.txt
 ```
 
-Or use local model to run
+## Optimizing and Saving the Model to a Low Bit Version
+
+To optimize the model to a low bit version and save it for later use, run the following command:
 
 ```bash
-python src/save_low_bit.py
+python src/optimize_and_save_model.py
+```
+
+## Serving using BigDL-LLM and FastChat
+
+First, launch the controller
+```bash
 python -m fastchat.serve.controller
-python src/model_worker.py --model-path minicpm-2b-bigdl-lowbit --device cpu
+```
+
+Then, launch the model worker:
+```bash
+python src/model_worker.py --model-path models/minicpm-2b-bigdl-lowbit --device cpu
+```
+
+Finally, launch the Gradio web server
+```bash
 python src/gradio_web_server.py
 ```
-
-
