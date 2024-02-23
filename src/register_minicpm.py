@@ -17,14 +17,12 @@ class MiniCPMAdapter(BaseModelAdapter):
             model = AutoModelForCausalLM.load_low_bit(
                 model_path,
                 trust_remote_code=True,
-                **from_pretrained_kwargs,
             )
         else:
             model = AutoModelForCausalLM.from_pretrained(
                 model_path,
                 load_in_4bit=True,
                 trust_remote_code=True,
-                **from_pretrained_kwargs,
             )
 
         return model, tokenizer
