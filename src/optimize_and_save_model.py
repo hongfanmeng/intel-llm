@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(description="Convert the original model to low 
 parser.add_argument(
     "--model-path",
     type=str,
-    default="openbmb/MiniCPM-2B-sft-bf16",
+    default="openbmb/MiniCPM-2B-dpo-bf16",
     help="The model path of the original model.",
 )
 parser.add_argument(
