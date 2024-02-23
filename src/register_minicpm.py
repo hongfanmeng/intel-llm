@@ -14,10 +14,18 @@ class MiniCPMAdapter(BaseModelAdapter):
 
         tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
         if "bigdl-lowbit" in model_path:
-            # load saved low-bit model
-            model = AutoModelForCausalLM.load_low_bit(model_path, trust_remote_code=True)
+            model = AutoModelForCausalLM.load_low_bit(
+                model_path,
+                trust_remote_code=True,
+                **from_pretrained_kwargs,
+            )
         else:
-            model = AutoModelForCausalLM.from_pretrained(model_path, load_in_4bit=True, trust_remote_code=True)
+            model = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                load_in_4bit=True,
+                trust_remote_code=True,
+                **from_pretrained_kwargs,
+            )
 
         return model, tokenizer
 
